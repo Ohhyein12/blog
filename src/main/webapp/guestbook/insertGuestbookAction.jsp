@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*"%>
+<%@ page import = "java.sql.*" %>
+<%@ page import = "vo.*" %>
+<%@ page import = "dao.GuestbookDao" %>
+<% 
+	request.setCharacterEncoding("utf-8"); //인코딩하기
+
+	GuestbookDao guestbookDao = new GuestbookDao();
+	
+	//작성 값 요청받아오기
+	String writer = request.getParameter("writer");
+	String guestbookPw = request.getParameter("guestbookPw");
+	String guestbookContent = request.getParameter("guestbookContent");
+	
+	//디버깅
+	System.out.println("writer : " + writer);
+	System.out.println("guestbookPw : " + guestbookPw);
+	System.out.println("guestbookContent : " + guestbookContent);
+
+	// 하나의 변수로 가공
+	Guestbook guestbook = new Guestbook();
+	guestbook.setWriter(writer);
+	guestbook.setGuestbookPw(guestbookPw);
+	guestbook.setGuestbookContent(guestbookContent);
+	
+	
+	guestbookDao.insertGuestbook(guestbook);
+	
+	// 입력 실패 or 성공 후 guestbookList.jsp로 이동
+	response.sendRedirect(request.getContextPath()+"/guestbook/guestbookList.jsp"); // 보여줄수 있는 페이지로 이동
+	
+%>
+
