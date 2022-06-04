@@ -93,7 +93,6 @@ public class BoardDao {
 		
 		if(totalRowRs.next()) { 
 			totalRow = totalRowRs.getInt("cnt"); // 행 개수 저장한 cnt 넣기
-			System.out.println(totalRow +"<--totalRow(1000)"); //디버깅
 		}
 
 		//데이터베이스 자원들 반환

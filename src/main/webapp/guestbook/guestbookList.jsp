@@ -6,7 +6,6 @@
 <%@ page import = "dao.GuestbookDao" %>
 <%
 	int currentPage = 1; //현재페이지
-	
 	if(request.getParameter("currentPage") != null) {
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
@@ -30,6 +29,14 @@
 	if(totalCount % rowPerPage != 0){
 		lastPage++;
 	} 얘도 가능*/
+	
+	int beginPage=1; //페이지 목록의 첫 번호
+	if(request.getParameter("beginPage")!=null) {
+		beginPage = Integer.parseInt(request.getParameter("beginPage"));
+		currentPage = beginPage; // 다음, 이전 버튼 눌러서 들어왔으면 현재 페이지 가장 작은수로 보여주기
+	} else { // 이전, 다음 클릭해서 넘어온거 아니라면
+		beginPage = (currentPage-1)/10*10+1; // 현재페이지 13이라면 beginPage는 11만들어주기
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -40,6 +47,12 @@
 <style>
 	.jb-wrap { padding: 60px 10px; } /*세로 길이 조절*/
 	.text-center {float:none; margin:0 auto;} /* 가운데 정렬 */
+	.up {
+		margin-top:20px;
+	}
+	.pagination-center {
+		justify-content: center;
+	}
 </style>
 </head>
 <body>
@@ -94,22 +107,37 @@
 	<%
 		}
 	%>
-	
-	<ul class="pagination">
-	<%
-		if(currentPage > 1){
-	%>
-			<li class="page-item"><a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage-1%>" class="page-link">이전</a></li>
-	<%
-		}
-	
-		if(currentPage < lastPage) {
-	%>	
-			<li class="page-item"><a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage+1%>" class="page-link">다음</a></li>
-	<%
-		}
-	%>
-	</ul>
+	<div class="up">
+		<ul class="pagination pagination-center">
+		<%
+			if(beginPage > 10){ // 이전버튼 페이징 첫 숫자가 11이상일때부터 출력 
+		%>
+				<li class="page-item">
+					<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?beginPage=<%=beginPage-10%>" class="page-link">이전</a>
+				</li>
+		<%
+			}
+			//목록 사이 숫자 출력
+			for(int i=beginPage; i<beginPage+10; i+=1) {
+				if(i<=lastPage) { // 총 페이지 수 10 미만일땐?
+		%>
+					<li class="page-item">
+						<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=i%>" class="page-link"><%=i%></a>
+					</li>
+		<%
+				}
+			}
+		
+			if(lastPage - beginPage > 10) {
+		%>	
+				<li class="page-item">
+					<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?beginPage=<%=beginPage+10%>" class="page-link">다음</a>
+				</li>
+		<%
+			}
+		%>
+		</ul>
+	</div>
 	
 	</div>
 </div>

@@ -32,8 +32,8 @@
 					<td><input type="password" name="pdfPw" class= "form-control"></td>
 				</tr>
 			</table>
-			<button type = "submit" class="btn btn-secondary">PDF 등록</button>
-			<a href="<%=request.getContextPath()%>/photo/photoList.jsp" class= "btn btn-info float-right">뒤로 가기</a>	
+			<button type = "submit" class="btn btn-info float-right">PDF 등록</button>
+			<a href="<%=request.getContextPath()%>/photo/photoList.jsp" class= "btn btn-secondary">뒤로 가기</a>	
 		</form>
 	</div>
 </body>

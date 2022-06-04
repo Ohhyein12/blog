@@ -19,14 +19,13 @@
 	ArrayList<Photo> list = photoDao.selectPhotoListByPage(beginRow, rowPerPage);
 	
 	// 다음 페이지 구현
-	int lastPage = 0;
 	
 	// 총개수        마지막 페이지
 	// 0, -10           1
 	// 11, - 20         2
 	
 	int total = photoDao.selectPhotoTotalRow();
-	lastPage = total/ rowPerPage;
+	int lastPage = total/ rowPerPage;
 	if(total % rowPerPage != 0) {
 		lastPage++;
 	}
@@ -38,6 +37,14 @@
 <meta charset="UTF-8">
 <title>photoList</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<style>
+	.up {
+		margin-top:20px;
+	}
+	.pagination-center {
+		justify-content: center;
+	}
+</style>
 </head>
 <body>
 	<!-- 메인 메뉴 시작 -->
@@ -52,7 +59,7 @@
 		<a href="<%=request.getContextPath()%>/photo/insertPhotoForm.jsp" class="btn btn-primary float-right">이미지 등록</a>
 	</div>
 	<div class = "container">
-	<table class = "table-bordered">
+	<table class = "table-borderless">
 		<tr>
 	<%
 		// 한행에 5개의 이미지 출력(tr안에 td가 5개)
@@ -96,20 +103,22 @@
 		</tr>
 	</table>
 	</div>
-<%-- <ul class="pagination">
-	<%
-		if(currentPage > 1){
-	%>
-			<li class="page-item"><a href = "<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage-1%>" class="page-link">이전</a>	
-	<%
-		}
-			
-		if(currentPage < lastPage) {
-	%>
-			<li class="page-item"><a href = "<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage+1%>" class="page-link">다음</a>
-	<%
-		}
-	%>	
-	</ul> --%>
+	<div class="up">
+		<ul class="pagination pagination-center">
+			<%
+				if(currentPage > 1){
+			%>
+					<li class="page-item"><a href = "<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage-1%>" class="page-link">이전</a>	
+			<%
+				}
+					
+				if(currentPage < lastPage) {
+			%>
+					<li class="page-item"><a href = "<%=request.getContextPath()%>/photo/photoList.jsp?currentPage=<%=currentPage+1%>" class="page-link">다음</a>
+			<%
+				}
+			%>	
+		</ul> 
+	</div>
 </body>
 </html>

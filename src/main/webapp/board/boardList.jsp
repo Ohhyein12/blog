@@ -22,9 +22,9 @@
 	System.out.println(categoryName + "<--categoryName"); // 확인 디버깅
 	
 	int rowPerPage = 10; // 한 페이지에 내가 보고싶은 행의 개수
-	if(request.getParameter("rowPerPage") != null) {
+	if(request.getParameter("rowPerPage") != null) { // 5개, 10개 골라서 출력하기 위함
 		rowPerPage = Integer.parseInt(request.getParameter("rowPerPage"));
-		categoryName = request.getParameter("categoryName");
+		
 	}
 
 
@@ -37,13 +37,14 @@
 	2페이지일때 ->        10
 	3페이지일때 ->        20
 	4페이지일때 ->        30
-	9페이지일때 -> 	       80
+	9페이지일때 -> 	    80
 	
 	?  = (currentPage-1)*10
 */
 	
 	
 	int beginRow = (currentPage-1)*rowPerPage; // 시작하는 페이지의 숫자 현재페이지가 변경되면 beginRow가 변경된다 -> 가져오는 데이터 변경됨
+	System.out.println(beginRow + "<--beginRow");
 	
 	// 카테고리 이름과 목차별 개수 구해서 ArrayList categoryList에 저장
 	ArrayList<HashMap<String,Object>> categoryList = categoryDao.categoryCnt();
@@ -55,7 +56,7 @@
 	
 	// 총 개수 구하는 메서드 호출해서 저장할건데 categoryName선택했으면 그 카테고리의 게시글 수 만큼 받아오기
 	totalRow = boardDao.selectBoardListTotalRow(categoryName);
-	
+	System.out.println(totalRow+"<--totalRow");
 	//다음버튼 페이징 위함
 	int lastPage = 0; // 마지막 페이지
 	if(totalRow % rowPerPage == 0) {
@@ -75,6 +76,14 @@
 			  마지막 페이지 = 전체행 / rowPerPage(한 페이지에 내가 보고싶은 행 개수)
 	*/
 	
+	int beginPage=1; // 페이지목록의 첫 페이지
+	if(request.getParameter("beginPage")!=null) { 
+		beginPage = Integer.parseInt(request.getParameter("beginPage"));
+		currentPage=beginPage; // 다음, 이전 버튼 눌렀을때 현재 페이지를 가장 작은 수로 보여주기
+	} else { // 이전, 다음 말고 그냥 숫자 클릭해서 넘어왔을때		
+		beginPage = (currentPage-1)/10*10+1;  // 현재페이지 13이라면 beginPage는 11만들어주기
+	}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -88,6 +97,12 @@
 <style>
 	.jb-wrap { padding: 100px 10px; } /*세로 길이 조절*/
 	.text-center {float:none; margin:0 auto;} /* 가운데 정렬 */
+	.up {
+		margin-top:20px;
+	}
+	.pagination-center {
+		justify-content: center;
+	}
 </style>
 </head>
 <body>
@@ -168,22 +183,40 @@
 				</tbody>	
 			</table>
 		
-			<div>
-			<ul class="pagination">
-				<!-- 페이지가 만약 10페이지였다면 이전을 누르면 9페이지가 되야하고 다음을 누르면 11페이지가 되야한다 -->
+			<div class="up">
+			<ul class="pagination pagination-center">
+				
 				<%
-					if(currentPage > 1)	 { // 페이지가 1보다 작을때 이전페이지가 존재해선 안되니
+					if(beginPage > 10)	 { // 페이지가 1보다 작을때 이전페이지가 존재해선 안되고 페이징 첫 숫자가 11이상일때부터 이전 글자가 출력되야함
 				%>
-						 <li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage-1%>&categoryName=<%=categoryName%>">이전</a></li>
-						
+						 <li class="page-item">
+						 	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&beginPage=<%=beginPage-10%>">
+						 		이전
+						 	</a>
+						 </li>
 				<%
 					}
+					
+					// 목록 사이 숫자 출력
+					for(int i=beginPage; i<beginPage+10; i+=1) {
+						if(i<=lastPage) { // 총 페이지수가 10개도 안될 수 있으니까 
 				%>
-				<!--  얘도 마지막페이지면 다음이 나와선 안됨 -->
+							<li class="page-item">
+							 	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&currentPage=<%=i%>">
+							 		<%=i%>
+							 	</a>
+							</li>
 				<%
-					if(currentPage < lastPage) { 
+						}
+					}
+					
+					if(lastPage - beginPage > 10) { // 마지막페이지에서 시작페이지를 뺀 숫자가 10보다 크다면 다음이 존재해야함
 				%>
-						  <li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?currentPage=<%=currentPage+1%>&categoryName=<%=categoryName%>">다음</a></li>
+					  <li class="page-item">
+					  	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&beginPage=<%=beginPage+10%>">
+					 		 다음
+					  	</a>
+		 			  </li>
 				<%
 					}
 				%>

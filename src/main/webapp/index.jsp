@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +15,19 @@
 </style>
 </head>
 <body> 
-<div class = "container jb-wrap">
-<h2 class="text-center" style="margin-bottom:20px">Home</h2>
-<ul class="list-group list-group-flush">
-	<li class="list-group-item"><a href = "<%=request.getContextPath()%>/board/boardList.jsp">게시판</a></li>
-	<li class="list-group-item"><a href = "<%=request.getContextPath()%>/photo/photoList.jsp">사진</a></li>
-	<li class="list-group-item"><a href = "<%=request.getContextPath()%>/guestbook/guestbookList.jsp">방명록</a></li>
-	<li class="list-group-item"><a href = "<%=request.getContextPath()%>/pdf/pdfList.jsp">PDF 자료실</a></li>
-</ul>
-</div>
+	<!-- 메인 메뉴 시작 -->
+	<jsp:include page ="/inc/upMenu.jsp"></jsp:include>
+	<!-- include시 컨텐츠명(프로젝트이름)을 명시하지 않는다 -->
+	<!-- 메인 메뉴 끝 -->
+	<div class = "container jb-wrap">
+	<h2 class="text-center" style="margin-bottom:20px">Home</h2>
+	
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/board/boardList.jsp">게시판</a></li>
+		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/photo/photoList.jsp">사진</a></li>
+		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/guestbook/guestbookList.jsp">방명록</a></li>
+		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/pdf/pdfList.jsp">PDF 자료실</a></li>
+	</ul>
+	</div>
 </body>
 </html>

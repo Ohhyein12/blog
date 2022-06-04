@@ -27,7 +27,7 @@
 		<form method="post" action="<%=request.getContextPath()%>/board/insertBoardAction.jsp">
 			<table class = "table table-bordered "> <!--  boardNo는 자동으로 들어갈거라 입력안함 -->
 				<tr>
-					<td class = "table-active">categoryName</td>
+					<th class = "table-active">카테고리</th>
 					<td>
 						<select name = "categoryName" class = "form-select">
 							<%
@@ -41,26 +41,26 @@
 					</td>
 				</tr>
 				<tr>
-					<td class = "table-active">boardTitle</td>
+					<th class = "table-active">제목</th>
 					<td>
 						<input type = "text" name = "boardTitle" class = "form-control">
 					</td>
 				</tr>
 				<tr>
-					<td class = "table-active">boardContent</td>
+					<th class = "table-active">내용</th>
 					<td>
 						<textarea name= "boardContent" rows="5" cols="80" class = "form-control"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td class = "table-active">boardPw</td>
+					<th class = "table-active">비밀번호</th>
 					<td>
 						<input name = "boardPw" type= "password" class = "form-control">
 					</td>
 				</tr>
 			</table>
-			<button type= "submit" class="btn btn-secondary">board 입력</button>
-			<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-info float-right">뒤로 가기</a>		
+			<button type= "submit" class="btn btn-info float-right">board 입력</button>
+			<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-secondary">뒤로 가기</a>		
 		</form>
 		
 	</div>

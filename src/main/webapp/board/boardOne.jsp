@@ -58,34 +58,38 @@
 			<br>
 			<table class = "table table-bordered">
 				<tr>
-					<td class = "table-active">boardNo</td>
+					<td class = "table-active">게시글 번호</td>
 					<td><%= board.getBoardNo()%></td>
 				</tr>
 				<tr>
-					<td class = "table-active">categoryName</td>
+					<td class = "table-active">카테고리</td>
 					<td><%= board.getCategoryName()%></td>
 				</tr>
 				<tr>
-					<td class = "table-active">boardTitle</td>
+					<td class = "table-active">제목</td>
 					<td><%= board.getBoardTitle()%></td>
 				</tr>
 				<tr>
-					<td class = "table-active">boardContent</td>
+					<td class = "table-active">내용</td>
 					<td><%= board.getBoardContent()%></td>
 				</tr>
 				<tr>
-					<td class = "table-active">createDate</td>
+					<td class = "table-active">작성일</td>
 					<td><%= board.getCreateDate()%></td>
 				</tr>
 				<tr>
-					<td class = "table-active">updateDate</td>
+					<td class = "table-active">마지막 수정일</td>
 					<td><%= board.getUpdateDate()%></td>
 				</tr>
 			</table>
 			<div>
+			<span class="float-right">
 				<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-outline-info">수정하기</a>
 				<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-outline-info">삭제하기</a>
-				<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-info float-right">뒤로 가기</a>
+			</span>
+			
+				
+				<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-info">뒤로 가기</a>
 			</div>
 		</div>
 	</div>
