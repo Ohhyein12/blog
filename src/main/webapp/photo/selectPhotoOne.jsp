@@ -21,19 +21,20 @@
 <style>
 	.jb-wrap { padding: 100px 10px; } /*세로 가운데 정렬*/
 	.text-center {float:none; margin:0 auto;} /* 가운데 정렬 */
+	.bottom {margin-bottom:40px;}
 </style>
 </head>
 <body>
 	<!-- 메인 메뉴 시작 -->
 	<jsp:include page="/inc/upMenu.jsp"></jsp:include> <!-- 얘는 컨텍스명(request.getContextPath()) 불가 (프로젝트이름)을 명시하지 않는다 - include는 내부요청이라서! -->
 	<!-- 메인 메뉴 끝 -->
-	<div class = "container-fluid">
+	<div class = "container">
 		<br>
 		<br>
-		<h2 class = "text-center">Photo 상세보기</h2>
+		<h2 class = "text-center bottom">Photo 상세보기</h2>
 		<div class="row jb-wrap">
 			<div class="col-md-5">
-				<img src="<%=request.getContextPath()%>/upload/<%=photo.getPhotoName()%>" width="500" height="500">
+				<img src="<%=request.getContextPath()%>/upload/<%=photo.getPhotoName()%>" width="100%" height="100%">
 			</div>
 			<div class="col-md-7 ">	
 				<table class = "table table-bordered">
@@ -58,7 +59,7 @@
 						<td><%=photo.getCreateDate()%></td>
 					</tr>
 				</table>
-				<a href="<%=request.getContextPath()%>/photo/deletePhotoForm.jsp?photoNo=<%=photo.getPhotoNo()%>" class="btn btn-info float-right">삭제</a>
+				<a href="<%=request.getContextPath()%>/photo/deletePhotoForm.jsp?photoNo=<%=photo.getPhotoNo()%>" class="btn btn-info float-right">삭제하기</a>
 				<a href="<%=request.getContextPath()%>/photo/photoList.jsp " class= "btn btn-secondary">뒤로 가기</a>
 			</div>
 		</div>

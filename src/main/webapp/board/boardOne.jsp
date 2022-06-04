@@ -30,13 +30,14 @@
 	.jb-wrap { padding: 150px 10px; } /*세로 가운데 정렬*/
 	.text-center {float:none; margin:0 auto;} /* 가운데 정렬 */
 	.up {margin-top:100px;}
+	.bottom { margin-bottom:20px;}
 </style>
 </head>
 <body>
 	<!-- 메인 메뉴 시작 -->
 	<jsp:include page="/inc/upMenu.jsp"></jsp:include> <!-- 얘는 컨텍스명(request.getContextPath()) 불가 (프로젝트이름)을 명시하지 않는다 - include는 내부요청이라서! -->
 	<!-- 메인 메뉴 끝 -->
-	<div class = "container-fluid">
+	<div class = "container">
 		<div class="row">
 			<div class="col-md-2 jb-wrap">
 				<!-- category별 게시글 링크 메뉴 -->
@@ -58,7 +59,7 @@
 			</div>
 			<div class="col-md-10 up">
 				<br>
-				<h2 class = "text-center">상세 정보</h2>
+				<h2 class = "text-center bottom">게시글 상세 정보</h2>
 				<br>
 				<table class = "table table-bordered">
 				<colgroup>
