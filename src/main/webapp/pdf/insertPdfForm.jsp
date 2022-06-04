@@ -11,6 +11,9 @@
 </style>
 </head>
 <body>
+	<!-- 메인 메뉴 시작 -->
+	<jsp:include page="/inc/upMenu.jsp"></jsp:include> <!-- 얘는 컨텍스명(request.getContextPath()) 불가 (프로젝트이름)을 명시하지 않는다 - include는 내부요청이라서! -->
+	<!-- 메인 메뉴 끝 -->
 	<div class = "container-fluid jb-wrap">
 		<h2 class = "text-center" style = "margin-bottom:20px">PDF 등록</h2>
 		<form method="post" action = "<%=request.getContextPath() %>/pdf/insertPdfAction.jsp"  enctype="multipart/form-data">

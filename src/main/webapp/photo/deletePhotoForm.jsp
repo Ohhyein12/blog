@@ -3,7 +3,6 @@
 <%
 	//요청값 받아오기
 	int photoNo = Integer.parseInt(request.getParameter("photoNo"));
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -16,14 +15,17 @@
 </style>
 </head>
 <body>
+	<!-- 메인 메뉴 시작 -->
+	<jsp:include page="/inc/upMenu.jsp"></jsp:include> <!-- 얘는 컨텍스명(request.getContextPath()) 불가 (프로젝트이름)을 명시하지 않는다 - include는 내부요청이라서! -->
+	<!-- 메인 메뉴 끝 -->
 	<div class = "container-fluid jb-wrap">
 		<h2 class="text-center" style="margin-bottom:20px">삭제 하기</h2>
 		<form method = "post" action="<%=request.getContextPath()%>/deletePhotoAction.jsp">
 			<table class ="table table-bordered">
-			<colgroup>
-				<col width="20%">
-				<col width="*">		
-			</colgroup>
+				<colgroup>
+					<col width="20%">
+					<col width="*">		
+				</colgroup>
 				<tr>
 					<th class = "table-active">사진 번호</th>
 					<td><input type="text" name="photoNo" value="<%=photoNo%>" readonly="readonly" class="form-control"></td>

@@ -1,7 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "vo.*" %>
+<%@ page import = "dao.*" %>
+<%@ page import = "java.util.*" %>
 <%
 	
+	int beginRow = 0;
+	//한 페이지에 볼 행 개수 
+	int boardRowPerPage = 7;
+	int guestBookRowPerPage = 3;
+	// selectBoardListByPage메서드 쓰기 위한 매개변수 값 선언
+	String categoryName = "";
+	
+	BoardDao boardDao = new BoardDao();
+	GuestbookDao guestbookDao = new GuestbookDao();
+	
+	ArrayList<Board> boardList = boardDao.selectBoardListByPage(beginRow, boardRowPerPage, categoryName);
+
+	ArrayList<Guestbook> guestBookList = guestbookDao.selectGuestbookListByPage(beginRow,guestBookRowPerPage);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -20,14 +37,39 @@
 	<!-- include시 컨텐츠명(프로젝트이름)을 명시하지 않는다 -->
 	<!-- 메인 메뉴 끝 -->
 	<div class = "container jb-wrap">
-	<h2 class="text-center" style="margin-bottom:20px">Home</h2>
-	
-	<ul class="list-group list-group-flush">
-		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/board/boardList.jsp">게시판</a></li>
-		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/photo/photoList.jsp">사진</a></li>
-		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/guestbook/guestbookList.jsp">방명록</a></li>
-		<li class="list-group-item"><a href = "<%=request.getContextPath()%>/pdf/pdfList.jsp">PDF 자료실</a></li>
-	</ul>
+		<h2 class="text-center" style="margin-bottom:20px">Home</h2>
 	</div>
+	
+	<h3>최근 게시물</h3>
+	<a href="<%=request.getContextPath()%>/board/boardList.jsp" class="float-right">더보기</a>
+	<table class = "table">
+		<%
+			for(Board b : boardList) {
+		%>
+		<tr>
+			<td><a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>"><%=b.getBoardTitle()%></a></td>
+			<td><%=b.getCreateDate()%></td>
+		</tr>
+		<%
+			}
+		%>
+	</table>
+	
+	<h3>최근 방명록</h3>
+	<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp" class="float-right">더보기</a>
+	<table class="table">
+		<%
+			for(Guestbook g : guestBookList) {
+		%>
+		<tr>
+			<td><%=g.getWriter()%></td>
+			<td><%=g.getGuestbookContent()%></td>
+			<td><%=g.getCreateDate()%></td>
+		</tr>
+		<%
+			}
+		%>
+	</table>
+	
 </body>
 </html>

@@ -28,7 +28,7 @@
 		System.out.println("삭제 성공!");
 		response.sendRedirect(request.getContextPath() + "/board/boardList.jsp");
 	}else { // 삭제된 행이 여러개? 잘못된 것
-			System.out.println("에러!");
+		System.out.println("에러!");
 	}
 	
 	

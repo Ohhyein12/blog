@@ -42,48 +42,47 @@
 	<!-- 메인 메뉴 끝 -->
 	<br>
 	<br>
-	<h2 class="inline text-center" style = "margin-bottom:70px">PDF 목록</h2>
-	<div class ="container-fluid">
-	<a href="<%=request.getContextPath()%>/pdf/insertPdfForm.jsp" class="btn btn-primary float-right" style = "margin-bottom:10px">PDF 등록</a>	
-	<table class = "table table-bordered">
-		<tr class="table-active">
-			<td>PDF 자료명</td>
-			<td>작성자</td>
-			<td>작성날짜</td>
-		</tr>
-		<%
-			for(Pdf p : list) {
-		%>
-			<tr>
-				<td>
-					<a href="<%=request.getContextPath()%>/uploadPdf/<%=p.getPdfName()%>"><%=p.getPdfName()%></a>
-				</td>
-				<td><%=p.getWriter()%></td>
-				<td><%=p.getCreateDate()%>
-					<a href="<%=request.getContextPath()%>/pdf/deletePdfForm.jsp?pdfNo=<%=p.getPdfNo()%>" class="btn btn-info float-right">삭제</a>
-				</td>
+	<h2 class="inline text-center" style = "margin-bottom:70px">PDF 자료실</h2>
+	<div class ="container">
+		<a href="<%=request.getContextPath()%>/pdf/insertPdfForm.jsp" class="btn btn-primary float-right" style = "margin-bottom:10px">PDF 등록</a>	
+		<table class = "table table-bordered">
+			<tr class="table-active">
+				<td>PDF 자료명</td>
+				<td>작성자</td>
+				<td>작성날짜</td>
 			</tr>
+			<%
+				for(Pdf p : list) {
+			%>
+				<tr>
+					<td>
+						<a href="<%=request.getContextPath()%>/uploadPdf/<%=p.getPdfName()%>"><%=p.getPdfName()%></a>
+					</td>
+					<td><%=p.getWriter()%></td>
+					<td><%=p.getCreateDate()%>
+						<a href="<%=request.getContextPath()%>/pdf/deletePdfForm.jsp?pdfNo=<%=p.getPdfNo()%>" class="btn btn-info float-right">삭제</a>
+					</td>
+				</tr>
+			<%
+				}
+			%>
+		</table>
+		
+		<ul class="pagination">
+		<%
+			if(currentPage > 1){
+		%>
+				<li class="page-item"><a href = "<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage-1%>" class="page-link">이전</a>	
 		<%
 			}
+				
+			if(currentPage < lastPage) {
 		%>
-	</table>
-	
-	<ul class="pagination">
-	<%
-		if(currentPage > 1){
-	%>
-			<li class="page-item"><a href = "<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage-1%>" class="page-link">이전</a>	
-	<%
-		}
-			
-		if(currentPage < lastPage) {
-	%>
-			<li class="page-item"><a href = "<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage+1%>" class="page-link">다음</a>
-	<%
-		}
-	%>	
-	</ul>
+				<li class="page-item"><a href = "<%=request.getContextPath()%>/pdf/pdfList.jsp?currentPage=<%=currentPage+1%>" class="page-link">다음</a>
+		<%
+			}
+		%>	
+		</ul>
 	</div>
-	
 </body>
 </html>

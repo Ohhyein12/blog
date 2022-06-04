@@ -25,7 +25,6 @@
 	guestbook.setGuestbookPw(guestbookPw);
 	guestbook.setGuestbookContent(guestbookContent);
 	
-	
 	guestbookDao.insertGuestbook(guestbook);
 	
 	// 입력 실패 or 성공 후 guestbookList.jsp로 이동

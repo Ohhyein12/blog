@@ -21,6 +21,9 @@
 </style>
 </head>
 <body>
+	<!-- 메인 메뉴 시작 -->
+	<jsp:include page="/inc/upMenu.jsp"></jsp:include> <!-- 얘는 컨텍스명(request.getContextPath()) 불가 (프로젝트이름)을 명시하지 않는다 - include는 내부요청이라서! -->
+	<!-- 메인 메뉴 끝 -->
 	<div class = "container-fluid jb-wrap">
 		<h2 class="text-center">게시글 입력</h2>
 		<br>
@@ -33,7 +36,7 @@
 							<%
 								for(String s : list) {
 							%>
-								<option value="<%=s%>"><%=s%></option>
+									<option value="<%=s%>"><%=s%></option>
 							<%
 								}
 							%>
@@ -49,7 +52,7 @@
 				<tr>
 					<th class = "table-active">내용</th>
 					<td>
-						<textarea name= "boardContent" rows="5" cols="80" class = "form-control"></textarea>
+						<textarea name= "boardContent" rows="5" cols="80" class="form-control"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -59,10 +62,9 @@
 					</td>
 				</tr>
 			</table>
-			<button type= "submit" class="btn btn-info float-right">board 입력</button>
+			<button type= "submit" class="btn btn-info float-right">게시글 입력</button>
 			<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-secondary">뒤로 가기</a>		
 		</form>
-		
 	</div>
 </body>
 </html>

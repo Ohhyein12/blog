@@ -28,58 +28,61 @@
 </style>
 </head>
 <body>
-<div class = "container-fluid jb-wrap">
-	<h2 class ="text-center">수정</h2>
-	<br>
-	<form method = "post" action= "<%=request.getContextPath()%>/board/updateBoardAction.jsp">
-		<table class = "table table-bordered ">
-			<tr>
-				<td class = "table-active">boardNo</td>
-				<td><input type="text" name="boardNo" value="<%=board.getBoardNo()%>" readonly="readonly" class="form-control"></td>
-			</tr>
-			<tr>
-				<td class = "table-active">categoryName</td>
-				<td>
-					<select name="categoryName">
-						<%
-							for(String s : list) { 
-								if(s.equals(board.getCategoryName())) {
-						%>
-									<option selected = "selected" value="<%=s%>"><%=s%></option>
-						<%
-								}else {
-						%>
-									<option value ="<%=s%>"><%=s%></option>
-						<%
+	<!-- 메인 메뉴 시작 -->
+	<jsp:include page="/inc/upMenu.jsp"></jsp:include> <!-- 얘는 컨텍스명(request.getContextPath()) 불가 (프로젝트이름)을 명시하지 않는다 - include는 내부요청이라서! -->
+	<!-- 메인 메뉴 끝 -->
+	<div class = "container-fluid jb-wrap">
+		<h2 class ="text-center">수정</h2>
+		<br>
+		<form method = "post" action= "<%=request.getContextPath()%>/board/updateBoardAction.jsp">
+			<table class = "table table-bordered ">
+				<tr>
+					<td class = "table-active">boardNo</td>
+					<td><input type="text" name="boardNo" value="<%=board.getBoardNo()%>" readonly="readonly" class="form-control"></td>
+				</tr>
+				<tr>
+					<td class = "table-active">categoryName</td>
+					<td>
+						<select name="categoryName">
+							<%
+								for(String s : list) { 
+									if(s.equals(board.getCategoryName())) {
+							%>
+										<option selected = "selected" value="<%=s%>"><%=s%></option>
+							<%
+									}else {
+							%>
+										<option value ="<%=s%>"><%=s%></option>
+							<%
+									}
 								}
-							}
-						%>
-					
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class = "table-active">boardTitle</td>
-				<td >
-				<input type="text" name="boardTitle" value="<%=board.getBoardTitle()%>" class="form-control">
-				</td>
-			</tr>
-			<tr>
-				<td class = "table-active">boardContent</td>
-				<td>
-				<textarea rows="5" cols="50" name = "boardContent" class="form-control"><%=board.getBoardContent()%></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td class = "table-active">boardPw</td>
-				<td>
-				<input type="password" name="boardPw" class="form-control">
-				</td>
-			</tr>
-		</table>
-		<button type="submit" class="btn btn-outline-info">수정하기</button>
-		<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class= "btn btn-info float-right">뒤로 가기</a>
-	</form>
-</div>
+							%>
+						
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class = "table-active">boardTitle</td>
+					<td>
+						<input type="text" name="boardTitle" value="<%=board.getBoardTitle()%>" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td class = "table-active">boardContent</td>
+					<td>
+						<textarea rows="5" cols="50" name = "boardContent" class="form-control"><%=board.getBoardContent()%></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class = "table-active">boardPw</td>
+					<td>
+						<input type="password" name="boardPw" class="form-control">
+					</td>
+				</tr>
+			</table>
+			<button type="submit" class="btn btn-outline-info">수정하기</button>
+			<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class= "btn btn-info float-right">뒤로 가기</a>
+		</form>
+	</div>
 </body>
 </html>

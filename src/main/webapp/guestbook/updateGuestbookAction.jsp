@@ -3,7 +3,6 @@
 <%@ page import = "vo.*"%>
 <%@ page import = "dao.GuestbookDao" %>
 <%
-
 	request.setCharacterEncoding("utf-8");// 인코딩하기 한글안깨지게
 
 	//요청값 받아오기

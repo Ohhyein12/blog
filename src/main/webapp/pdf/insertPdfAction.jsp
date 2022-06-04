@@ -29,7 +29,7 @@
 	
 	if(pdfType.equals("application/pdf")) {
 	
-		System.out.println("db 고고!");
+		System.out.println("db start!");
 		PdfDao pdfDao = new PdfDao();
 		Pdf pdf = new Pdf();
 		pdf.setPdfName(pdfName);

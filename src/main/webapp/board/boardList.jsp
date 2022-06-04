@@ -95,7 +95,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-	.jb-wrap { padding: 100px 10px; } /*세로 길이 조절*/
+	.jb-wrap { padding: 150px 10px; } /*세로 길이 조절*/
 	.text-center {float:none; margin:0 auto;} /* 가운데 정렬 */
 	.up {
 		margin-top:20px;
@@ -106,124 +106,128 @@
 </style>
 </head>
 <body>
-<div class = "container-fluid">
 	<!-- 메인 메뉴 시작 -->
 	<jsp:include page="/inc/upMenu.jsp"></jsp:include> <!-- 얘는 컨텍스명(request.getContextPath()) 불가 (프로젝트이름)을 명시하지 않는다 - include는 내부요청이라서! -->
 	<!-- 메인 메뉴 끝 -->
-	
-	<div class="row">
-		<div class="col-md-2 jb-wrap">
-			<!-- category별 게시글 링크 메뉴 -->
-				<ul class="list-group">
+	<div class = "container">	
+		<div class="row">
+			<div class="col-md-2 jb-wrap">
+				<!-- category별 게시글 링크 메뉴 -->
+					<ul class="list-group">
+						<%
+							for(HashMap<String, Object> m : categoryList) { 
+						%>
+								<li class = "list-group-item list-group-item-action list-group-item-secondary">
+										<a href = "<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>" >
+										<%=m.get("categoryName")%>
+										<span class="badge badge-primary badge-pill">(<%=m.get("cnt") %>)</span>
+										</a> 
+										<!-- blog들고오기 저렇게 해두면 나중에  content명 바껴도 바꿔줄 필요 없음 -->
+								</li>
+						<%	
+							}
+						%>
+					</ul>
+					<br>
+					<div>
+					<% 
+						if(!categoryName.equals("")) {
+					%>
+							<a href = "<%=request.getContextPath()%>/board/boardList.jsp" class="btn btn-outline-success">전체 목록 보기 출력</a>
 					<%
-						for(HashMap<String, Object> m : categoryList) { 
-					%>
-							<li class = "list-group-item list-group-item-action list-group-item-secondary">
-									<a href = "<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>" >
-									<%=m.get("categoryName")%>
-									<span class="badge badge-primary badge-pill">(<%=m.get("cnt") %>)</span>
-									</a> 
-									<!-- blog들고오기 저렇게 해두면 나중에  content명 바껴도 바꿔줄 필요 없음 -->
-							</li>
-					<%	
 						}
 					%>
-				</ul>
+					</div>
+			</div>
+			<div class="col-md-10">
+				<!--  게시글 리스트 -->
 				<br>
-				<div>
-				<% 
-					if(!categoryName.equals("")) {
-				%>
-						<a href = "<%=request.getContextPath()%>/board/boardList.jsp" class="btn btn-outline-success">전체 목록 보기 출력</a>
-				<%
-					}
-				%>
+				<br>
+				<h2 class = "inline text-center">게시글 목록(total : <%=totalRow%>)</h2>
+				<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-primary float-right">게시글 입력</a>
+				<br>
+				<!-- rowPerPage -->
+	         	<div class="dropdown">
+	            	 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+	              	   몇 행씩
+	             	 </button>
+		             <div class="dropdown-menu">
+		               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=5&categoryName=<%=categoryName%>"> 5 </a>
+		               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=10&categoryName=<%=categoryName%>"> 10 </a>
+		               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=15&categoryName=<%=categoryName%>"> 15 </a>
+		               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=20&categoryName=<%=categoryName%>"> 20 </a>
+		            </div>
+	           </div>
+	  	
+				<table class = "table table-bordered ">
+					<colgroup>
+						<col width="20%">
+						<col width="55%">
+						<col width="*">
+					</colgroup>
+					<thead class = "table-active">
+						<tr>
+							<th>categoryName</th>
+							<th>boardTitle</th>
+							<th>createDate</th>
+						</tr>
+					</thead>
+					<tbody>
+						 <%
+						 	for(Board b : boardList) { 
+						 %>
+						 <tr>
+						 		<td><%=b.getCategoryName() %></td>
+						 		<td><a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>"><%=b.getBoardTitle()%></a></td>
+								<td><%=b.getCreateDate()%></td>
+						 </tr>
+						 <%	
+						 	}
+						 %>
+					</tbody>	
+				</table>
+			
+				<div class="up">
+					<ul class="pagination pagination-center">
+						
+						<%
+							if(beginPage > 10)	 { // 페이지가 1보다 작을때 이전페이지가 존재해선 안되고 페이징 첫 숫자가 11이상일때부터 이전 글자가 출력되야함
+						%>
+								 <li class="page-item">
+								 	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&beginPage=<%=beginPage-10%>">
+								 		이전
+								 	</a>
+								 </li>
+						<%
+							}
+							
+							// 목록 사이 숫자 출력
+							for(int i=beginPage; i<beginPage+10; i+=1) {
+								if(i<=lastPage) { // 총 페이지수가 10개도 안될 수 있으니까 
+						%>
+									<li class="page-item">
+									 	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&currentPage=<%=i%>">
+									 		<%=i%>
+									 	</a>
+									</li>
+						<%
+								}
+							}
+							
+							if(lastPage - beginPage > 10) { // 마지막페이지에서 시작페이지를 뺀 숫자가 10보다 크다면 다음이 존재해야함
+						%>
+							  <li class="page-item">
+							  	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&beginPage=<%=beginPage+10%>">
+							 		 다음
+							  	</a>
+				 			  </li>
+						<%
+							}
+						%>
+					</ul>
 				</div>
-		</div>
-		<div class="col-md-10">
-			<!--  게시글 리스트 -->
-			<br>
-			<br>
-			<h2 class = "inline text-center">게시글 목록(total : <%=totalRow%>)</h2>
-			<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp" class="btn btn-primary float-right">게시글 입력</a>
-			<br>
-			<!-- rowPerPage -->
-         	<div class="dropdown">
-            	 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-              	   몇 행씩
-             	</button>
-	             <div class="dropdown-menu">
-	               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=5&categoryName=<%=categoryName%>"> 5 </a>
-	               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=10&categoryName=<%=categoryName%>"> 10 </a>
-	               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=15&categoryName=<%=categoryName%>"> 15 </a>
-	               <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=20&categoryName=<%=categoryName%>"> 20 </a>
-	            </div>
-           </div>
-  	
-			<table class = "table table-bordered ">
-				<thead class = "table-active">
-					<tr>
-						<th>categoryName</th>
-						<th>boardTitle</th>
-						<th>createDate</th>
-					</tr>
-				</thead>
-				<tbody>
-					 <%
-					 	for(Board b : boardList) { 
-					 %>
-					 <tr>
-					 		<td><%=b.getCategoryName() %></td>
-					 		<td><a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>"><%=b.getBoardTitle()%></a></td>
-							<td><%=b.getCreateDate()%></td>
-					 </tr>
-					 <%	
-					 	}
-					 %>
-				</tbody>	
-			</table>
-		
-			<div class="up">
-			<ul class="pagination pagination-center">
-				
-				<%
-					if(beginPage > 10)	 { // 페이지가 1보다 작을때 이전페이지가 존재해선 안되고 페이징 첫 숫자가 11이상일때부터 이전 글자가 출력되야함
-				%>
-						 <li class="page-item">
-						 	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&beginPage=<%=beginPage-10%>">
-						 		이전
-						 	</a>
-						 </li>
-				<%
-					}
-					
-					// 목록 사이 숫자 출력
-					for(int i=beginPage; i<beginPage+10; i+=1) {
-						if(i<=lastPage) { // 총 페이지수가 10개도 안될 수 있으니까 
-				%>
-							<li class="page-item">
-							 	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&currentPage=<%=i%>">
-							 		<%=i%>
-							 	</a>
-							</li>
-				<%
-						}
-					}
-					
-					if(lastPage - beginPage > 10) { // 마지막페이지에서 시작페이지를 뺀 숫자가 10보다 크다면 다음이 존재해야함
-				%>
-					  <li class="page-item">
-					  	<a class="page-link" href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=categoryName%>&rowPerPage=<%=rowPerPage%>&beginPage=<%=beginPage+10%>">
-					 		 다음
-					  	</a>
-		 			  </li>
-				<%
-					}
-				%>
-			</ul>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>
