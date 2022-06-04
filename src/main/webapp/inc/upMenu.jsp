@@ -15,7 +15,14 @@
    .nav-wrap { display:inline-block; padding:5px 20px; box-shadow: 0 6px 20px 0 rgb(0 0 0 / 19%); }
    .logo-a { color:#000087; font-size:2em; font-weight:500;}
    .logo-a:hover { color:#000087; text-decoration:none; }
+   .rightNav { display:inline-block; margin:15px; }
    .nav-a { color:#787878; margin:0 10px; }
+   
+    @media (max-width:570px){
+       .nav-wrap{ text-align:center; }
+       .logo-a{ display:block; }
+       .rightNav{ float:none !important; }
+   }
 </style>
 
 </head>
@@ -23,7 +30,7 @@
    <div class="container-fluid nav-wrap">
       <a href="<%=request.getContextPath()%>/index.jsp" class="logo-a">Hyein`s Blog</a>
       
-      <div style="display:inline-block; margin:15px; " class="float-right">
+      <div class="float-right rightNav">
          <a href="<%=request.getContextPath()%>/board/boardList.jsp" class="nav-a" >게시판</a>
          <a href="<%=request.getContextPath()%>/photo/photoList.jsp" class="nav-a" >사진</a>
          <a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp" class="nav-a" >방명록</a>

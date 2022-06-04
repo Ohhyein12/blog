@@ -3,7 +3,7 @@
 <%@ page import = "vo.*" %>
 <%@ page import = "dao.*" %>
 <%	
-	BoardDao boardDao = new BoardDao ();
+	BoardDao boardDao = new BoardDao();
 	CategoryDao categoryDao = new CategoryDao();
 
 	int currentPage = 1; // 현재페이지의 기본값이 1페이지

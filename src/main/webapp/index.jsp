@@ -48,7 +48,7 @@
    <jsp:include page ="/inc/upMenu.jsp"></jsp:include>
    <!-- include시 컨텐츠명(프로젝트이름)을 명시하지 않는다 -->
    <!-- 메인 메뉴 끝 -->
-   <div class="container" style="margin-top:70px;">
+   <div class="container" style="margin-top:150px;">
       <div class="left">
          <h3>최근 게시물</h3>
          <a href="<%=request.getContextPath()%>/board/boardList.jsp" class="float-right">더보기</a>
