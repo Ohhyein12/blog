@@ -36,8 +36,8 @@
 					<td><input type="password" name="pdfPw" class= "form-control"></td>
 				</tr>
 			</table>
-			<button type = "submit" class="btn btn-info float-right">PDF 등록</button>
-			<a href="<%=request.getContextPath()%>/pdf/pdfList.jsp" class= "btn btn-secondary">뒤로 가기</a>	
+			<button type = "submit" class="btn btn-success float-right">PDF 등록</button>
+			<a href="<%=request.getContextPath()%>/pdf/pdfList.jsp" class= "btn btn-outline-secondary">뒤로 가기</a>	
 		</form>
 	</div>
 </body>

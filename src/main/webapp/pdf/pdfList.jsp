@@ -60,7 +60,7 @@
 					</td>
 					<td><%=p.getWriter()%></td>
 					<td><%=p.getCreateDate()%>
-						<a href="<%=request.getContextPath()%>/pdf/deletePdfForm.jsp?pdfNo=<%=p.getPdfNo()%>" class="btn btn-info float-right">삭제</a>
+						<a href="<%=request.getContextPath()%>/pdf/deletePdfForm.jsp?pdfNo=<%=p.getPdfNo()%>" class="btn btn-secondary float-right">삭제</a>
 					</td>
 				</tr>
 			<%

@@ -37,8 +37,8 @@
 					<td><input type = "password" name = "boardPw" class="form-control"></td>
 				</tr>
 			</table>
-			<button type = "submit" class="btn btn-info float-right">삭제하기</button>
-			<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class= "btn btn-secondary">뒤로 가기</a>
+			<button type = "submit" class="btn btn-success float-right">삭제하기</button>
+			<a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=boardNo%>" class= "btn btn-outline-secondary">뒤로 가기</a>
 		</form>
 	</div>
 </body>

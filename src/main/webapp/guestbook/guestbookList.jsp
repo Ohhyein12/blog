@@ -93,8 +93,8 @@
 						<tr>
 							<td colspan="2"><%=g.getGuestbookContent()%>
 							<span class = "btn-group float-right">
-								<a href = "<%=request.getContextPath() %>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>" class="btn btn-primary btn-info ">수정</a>
-								<a href = "<%=request.getContextPath() %>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>" class="btn btn-primary btn-info ">삭제</a>
+								<a href = "<%=request.getContextPath() %>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>" class="btn btn-primary btn-success ">수정</a>&nbsp;
+								<a href = "<%=request.getContextPath() %>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>" class="btn btn-primary btn-secondary ">삭제</a>
 							</span>
 							</td>
 						</tr>

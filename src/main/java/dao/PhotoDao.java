@@ -19,7 +19,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "java1234"; // 비번 저장
+		String dbpw = "mariadb1234"; // 비번 저장
 
 		String photoName = "";
 		String sql = "SELECT photo_name photoName FROM photo WHERE photo_no = ?";
@@ -52,7 +52,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "java1234"; // 비번 저장
+		String dbpw = "mariadb1234"; // 비번 저장
 		// insert문 쿼리 저장
 		String sql = "INSERT into photo(photo_name, photo_original_name,photo_type, photo_pw, writer,create_date,update_date) values (?,?,?,?,?,now(),now())"; 
 		
@@ -93,7 +93,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "java1234"; // 비번 저장
+		String dbpw = "mariadb1234"; // 비번 저장
 		//delete 쿼리 문 저장
 		String sql = "DELETE FROM photo WHERE photo_no=? AND photo_pw=?";
 		
@@ -125,7 +125,7 @@ public class PhotoDao {
 		ResultSet rs = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "java1234"; // 비번 저장
+		String dbpw = "mariadb1234"; // 비번 저장
 		// 총 개수 반환하기
 		String sql = "SELECT COUNT(*) cnt FROM photo";
 		
@@ -156,7 +156,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "java1234"; // 비번 저장
+		String dbpw = "mariadb1234"; // 비번 저장
 		String sql = "SELECT photo_no photoNo, photo_name photoName FROM photo ORDER BY create_date LIMIT ?,?";
 		
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
@@ -190,7 +190,7 @@ public class PhotoDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "java1234"; // 비번 저장
+		String dbpw = "mariadb1234"; // 비번 저장
 		String sql = "SELECT photo_no photoNo, photo_name photoName, writer, create_date createDate FROM photo WHERE photo_no =?";
 		
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);

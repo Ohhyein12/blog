@@ -36,8 +36,8 @@
 					<td><input type="password" name="photoPw" class="form-control"></td>
 				</tr>
 			</table>
-			<button type="submit" class="btn btn-info float-right">삭제하기</button>
-			<a href="<%=request.getContextPath()%>/photo/selectPhotoOne.jsp?photoNo=<%=photoNo%>" class= "btn btn-secondary">뒤로 가기</a>	
+			<button type="submit" class="btn btn-success float-right">삭제하기</button>
+			<a href="<%=request.getContextPath()%>/photo/selectPhotoOne.jsp?photoNo=<%=photoNo%>" class= "btn btn-outline-secondary">뒤로 가기</a>	
 		</form>
 	</div>
 </body>

@@ -63,8 +63,8 @@
 					</td>
 				</tr>
 			</table>
-			<button type= "submit" class="btn btn-info float-right">게시글 입력</button>
-			<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-secondary">뒤로 가기</a>		
+			<button type= "submit" class="btn btn-success float-right">게시글 입력</button>
+			<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-outline-secondary">뒤로 가기</a>		
 		</form>
 	</div>
 </body>

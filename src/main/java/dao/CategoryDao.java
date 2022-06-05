@@ -16,7 +16,7 @@ public class CategoryDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "java1234"; // 비번 저장
+		String dbpw = "mariadb1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--conn"); // 디버깅 코드
 		

@@ -59,8 +59,8 @@
 						<td><%=photo.getCreateDate()%></td>
 					</tr>
 				</table>
-				<a href="<%=request.getContextPath()%>/photo/deletePhotoForm.jsp?photoNo=<%=photo.getPhotoNo()%>" class="btn btn-info float-right">삭제하기</a>
-				<a href="<%=request.getContextPath()%>/photo/photoList.jsp " class= "btn btn-secondary">뒤로 가기</a>
+				<a href="<%=request.getContextPath()%>/photo/deletePhotoForm.jsp?photoNo=<%=photo.getPhotoNo()%>" class="btn btn-success float-right">삭제하기</a>
+				<a href="<%=request.getContextPath()%>/photo/photoList.jsp " class= "btn btn-outline-secondary">뒤로 가기</a>
 			</div>
 		</div>
 	</div>

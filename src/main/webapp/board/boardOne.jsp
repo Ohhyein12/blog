@@ -93,10 +93,10 @@
 				</table>
 				<div>
 					<span class="float-right">
-						<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-info">수정하기</a>
-						<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-info">삭제하기</a>
+						<a href="<%=request.getContextPath()%>/board/updateBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-success">수정하기</a>
+						<a href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?boardNo=<%=board.getBoardNo()%>" class="btn btn-secondary">삭제하기</a>
 					</span>
-					<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-secondary">뒤로 가기</a>
+					<a href="<%=request.getContextPath()%>/board/boardList.jsp " class= "btn btn-outline-secondary">뒤로 가기</a>
 				</div>
 			</div>
 		</div>
