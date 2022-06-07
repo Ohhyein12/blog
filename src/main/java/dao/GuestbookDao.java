@@ -30,7 +30,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		// insert문 쿼리 저장
 		String sql = "insert into guestbook(guestbook_content, writer, guestbook_pw, create_date, update_date)values(?,?,?,now(),now())"; 
 		
@@ -73,7 +73,7 @@ public class GuestbookDao {
 		ResultSet rs = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 
 		String sql = "SELECT guestbook_no guestbookNo, guestbook_content guestbookContent,writer FROM guestbook WHERE guestbook_no = ?";
@@ -108,7 +108,7 @@ public class GuestbookDao {
 		PreparedStatement stmt = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 
 		String sql = "UPDATE guestbook SET guestbook_content = ? WHERE guestbook_no=? and guestbook_pw=?";
@@ -142,7 +142,7 @@ public class GuestbookDao {
 		PreparedStatement stmt = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		
 		String sql = "DELETE FROM guestbook WHERE guestbook_no=? AND guestbook_pw=?";
@@ -174,7 +174,7 @@ public class GuestbookDao {
 		ResultSet rs = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		String sql = "SELECT COUNT(*) cnt FROM guestbook";
 		
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
@@ -205,7 +205,7 @@ public class GuestbookDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		String sql = "SELECT guestbook_no guestbookNo, guestbook_content guestbookContent,guestbook_pw guestbookPw, writer, create_date createDate From guestbook order by create_date desc LIMIT ?,?"; 
 		
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);

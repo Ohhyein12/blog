@@ -16,7 +16,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--conn"); // 디버깅 코드
 		
@@ -74,7 +74,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--conn"); // 디버깅 코드
 		
@@ -112,7 +112,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn + "<--conn"); // 디버깅 코드
 		
@@ -141,7 +141,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--conn"); // 디버깅 코드
 		
@@ -185,7 +185,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--insertBoardAction conn"); // 디버깅
 		
@@ -218,7 +218,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--conn"); // 디버깅
 		
@@ -261,7 +261,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비밀번호 저장
+		String dbpw = "java1234"; // 비밀번호 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--conn"); 
 		
@@ -294,7 +294,7 @@ public class BoardDao {
 		Connection conn = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		System.out.println(conn+"<--conn"); // 디버깅
 		

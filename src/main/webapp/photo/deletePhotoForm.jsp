@@ -21,7 +21,7 @@
 	<!-- 메인 메뉴 끝 -->
 	<div class = "container jb-wrap">
 		<h2 class="text-center bottom"> 사진 삭제하기</h2>
-		<form method = "post" action="<%=request.getContextPath()%>/deletePhotoAction.jsp">
+		<form method="post" action="<%=request.getContextPath()%>/photo/deletePhotoAction.jsp">
 			<table class ="table table-bordered">
 				<colgroup>
 					<col width="20%">

@@ -21,7 +21,7 @@ public class PdfDao {
 				
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		// insert문 쿼리 저장
 		String sql = "INSERT INTO pdf(pdf_name, pdf_original_name, pdf_type, pdf_pw, writer, create_date, update_date) values(?,?,?,?,?,now(),now())";
 		
@@ -62,7 +62,7 @@ public class PdfDao {
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		//delete 쿼리 문 저장
 		String sql = "DELETE FROM pdf WHERE pdf_no=? AND pdf_pw=?";
 		
@@ -95,7 +95,7 @@ public class PdfDao {
 		ResultSet rs = null;
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		// 총 개수 반환하기
 		String sql = "SELECT COUNT(*) cnt FROM pdf";
 		
@@ -126,7 +126,7 @@ public class PdfDao {
 			
 		String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
 		String dbuser = "root"; // 아이디 저장
-		String dbpw = "mariadb1234"; // 비번 저장
+		String dbpw = "java1234"; // 비번 저장
 		
 		String sql = "SELECT pdf_no pdfNo,pdf_name pdfName, writer,create_date createDate FROM pdf ORDER BY create_date DESC LIMIT ?,?";
 		

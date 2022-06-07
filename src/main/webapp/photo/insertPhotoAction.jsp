@@ -19,8 +19,8 @@
 	// 2^10 kbyte = 1 mbyte
 	// 100 mbyte = 1024*1024*100 byte = 104857600 byte 곱셈을 계산해서 코딩하면 가독성이 떨어진다
 	
-	String path = application.getRealPath("upload"); // application변수는 tomcat자체를 가르킴 tomcat안의 upload라는 변수의 위치값을 찾아달란뜻 
-	System.out.println(path);
+	String path = application.getRealPath("upload"); // application변수는 tomcat자체를 가르킴 tomcat안의 upload라는 변수의 위치값을 찾아달란뜻
+	
 	MultipartRequest multiReq = new MultipartRequest(request, path,1024*1024*100,"utf-8",new DefaultFileRenamePolicy()); // 얠 진행하는 순간 파일은 자동으로 무조건 받아짐
 	// 실제경로는 \로 표현 \\두번써야 \하나와 같이 표현됨
 	String photoPw = multiReq.getParameter("photoPw");

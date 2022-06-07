@@ -37,9 +37,13 @@
 	if(row == 1) {
 		String path = application.getRealPath("upload");
 		File file = new File(path+"\\"+photoName);
-		file.delete(); 
+		if(file.exists()){
+			file.delete();
+		}
+		
+		System.out.println("폴더 이미지 삭제 성공");
 	} else {
-		System.out.println("삭제 실패!");
+		System.out.println("폴더 이미지 삭제 실패!");
 	}
 
 %>
