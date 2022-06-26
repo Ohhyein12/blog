@@ -61,7 +61,7 @@
 				<br>
 				<h2 class = "text-center bottom">게시글 상세 정보</h2>
 				<br>
-				<table class = "table table-bordered">
+				<table class = "table">
 				<colgroup>
 					<col width = "20%">
 					<col width = "*">

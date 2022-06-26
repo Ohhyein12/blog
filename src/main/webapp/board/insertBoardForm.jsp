@@ -15,6 +15,14 @@
 <meta charset="UTF-8">
 <title>insertBoardForm</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <style>
 	.jb-wrap { padding: 70px 10px; } /*세로 길이 조절*/
 	.text-center {float:none; margin:0 auto;} /* 가운데 정렬 */
@@ -29,11 +37,15 @@
 		<h2 class="text-center bottom">게시글 입력</h2>
 		<br>
 		<form method="post" action="<%=request.getContextPath()%>/board/insertBoardAction.jsp">
-			<table class = "table table-bordered "> <!--  boardNo는 자동으로 들어갈거라 입력안함 -->
+			<table class = "table"> <!--  boardNo는 자동으로 들어갈거라 입력안함 -->
+				<colgroup>
+					<col width="20%">
+					<col width="*">
+				</colgroup>
 				<tr>
-					<th class = "table-active">카테고리</th>
+					<th>카테고리</th>
 					<td>
-						<select name = "categoryName" class = "form-select">
+						<select name = "categoryName" class = "custom-select">
 							<%
 								for(String s : list) {
 							%>
@@ -45,19 +57,19 @@
 					</td>
 				</tr>
 				<tr>
-					<th class = "table-active">제목</th>
+					<th>제목</th>
 					<td>
 						<input type = "text" name = "boardTitle" class = "form-control">
 					</td>
 				</tr>
 				<tr>
-					<th class = "table-active">내용</th>
+					<th>내용</th>
 					<td>
-						<textarea name= "boardContent" rows="5" cols="80" class="form-control"></textarea>
+						<textarea id="summernote" name="boardContent"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<th class = "table-active">비밀번호</th>
+					<th>비밀번호</th>
 					<td>
 						<input name = "boardPw" type= "password" class = "form-control">
 					</td>
@@ -68,4 +80,12 @@
 		</form>
 	</div>
 </body>
+<script>
+	$('#summernote').summernote({
+	  tabsize: 2,
+	  height: 400
+	});
+	$(".note-editor button[aria-label='Picture']").hide();
+	$(".note-editor button[aria-label='Video']").hide();
+</script>
 </html>
